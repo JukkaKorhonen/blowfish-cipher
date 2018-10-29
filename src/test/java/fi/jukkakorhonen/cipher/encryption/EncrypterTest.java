@@ -18,6 +18,15 @@ public class EncrypterTest {
 		assertEquals(encryptedString, crypt);
 	}
 	
+	@Test
+	public void decryptlong_test() {
+		String json = "[{\"id\":1,\"service\":\"service\",\"username\":\"keke@gmail.com\",\"password\":\"passu1\"},{\"id\":2,\"service\":\"service2\",\"username\":\"keke@gmail.com\",\"password\":\"passu2\"}]";
+		String output = Encrypter.encrypt("jukka", json);
+		System.out.println(output);
+		assertTrue(output != null);
+	}
+	
+	
 	@Test(expected=CipherException.class)
 	public void encrypterFail_test() throws Exception {
 		Encrypter.encrypt("","Korhonen");

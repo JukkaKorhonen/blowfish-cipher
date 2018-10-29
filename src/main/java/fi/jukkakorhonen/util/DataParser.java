@@ -1,5 +1,6 @@
 package fi.jukkakorhonen.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +19,10 @@ public class DataParser {
 	public static List<PasswordData> parseFromJson(String jsondata) {
 		Gson gson = new Gson();
 		PasswordData[] data = gson.fromJson(jsondata, PasswordData[].class);
-		List<PasswordData> list = Arrays.asList(data);
+		List<PasswordData> list = new ArrayList<PasswordData>();
+		if (data != null) {
+			list = Arrays.asList(data);
+		}
 		return list;
 	}
 	

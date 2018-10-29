@@ -1,5 +1,6 @@
 package fi.jukkakorhonen.cipher;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -106,11 +107,10 @@ public class PasswordProcessor implements PasswordCommInterface {
 	}
 	
 	private Map<Integer, PasswordData> getWithId(Map<Integer, PasswordData> data, PasswordData password) {
-		Set<Integer> numbers = data.keySet();
-		numbers = numbers.stream().sorted().collect(Collectors.toSet());
-		Integer number = numbers.size();
-		password.setId(number);
-		data.put(number, password);
+		List<Integer> numbers = data.keySet().stream().sorted().collect(Collectors.toList());
+		Integer numb = numbers.get(numbers.size()-1)+1;
+		password.setId(numb);
+		data.put(numb, password);
 		return data;
 	}
 	
@@ -128,6 +128,8 @@ public class PasswordProcessor implements PasswordCommInterface {
 			}
 		} catch (CipherException e) {
 			throw e;
+		} catch (FileNotFoundException e) {
+			FileWriter.writeFile("");
 		}
 		return datareturn;
 	}

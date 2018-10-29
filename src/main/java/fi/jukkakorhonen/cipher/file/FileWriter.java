@@ -14,8 +14,9 @@ public class FileWriter {
 	public static void writeFile(String line) {
 		PrintWriter writer = null;
 		try {
-			writer = new PrintWriter("passworddata.txt", "UTF-8");
-			writer.println(line);
+			writer = new PrintWriter("passworddata.txt", "ISO_8859_1");
+			line = line.trim();
+			writer.print(line);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {

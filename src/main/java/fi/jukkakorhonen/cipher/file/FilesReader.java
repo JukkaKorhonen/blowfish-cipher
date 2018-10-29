@@ -1,5 +1,6 @@
 package fi.jukkakorhonen.cipher.file;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +19,9 @@ public class FilesReader extends InputStreamReader {
 	 * Read file named passworddata.txt
 	 * @return String read file
 	 * @throws CipherException
+	 * @throws FileNotFoundException 
 	 */
-	public static String readFile() throws CipherException {
+	public static String readFile() throws CipherException, FileNotFoundException {
 		StringBuilder sb = new StringBuilder();
 		try {
 			FileReader fr = new FileReader("passworddata.txt");
@@ -27,9 +29,12 @@ public class FilesReader extends InputStreamReader {
 			while ((i = fr.read()) != -1)
 				sb.append((char) i);
 			fr.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			throw e;
 		} catch (Exception e) {
 			throw new CipherException(e, "Cannot open file");
-		}
+		} 
 		return sb.toString();
 	}
 

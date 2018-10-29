@@ -57,6 +57,7 @@ public class DataParserTest {
 		datalist.add(d2);
 		
 		String data = DataParser.parseToJson(datalist);
+		//System.out.println(data);
 		assertTrue(data != null);
 		assertEquals("[{\"id\":1,\"service\":\"service\",\"username\":\"keke@gmail.com\",\"password\":\"passu1\"},{\"id\":2,\"service\":\"service2\",\"username\":\"keke@gmail.com\",\"password\":\"passu2\"}]", data);
 	}

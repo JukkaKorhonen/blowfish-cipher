@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fi.jukkakorhonen.cipher.encryption.Decrypter;
 import fi.jukkakorhonen.exception.CipherException;
 
 
